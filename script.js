@@ -26,14 +26,11 @@ function blockMove(){
     selectedTower = $(this)
     if (isLegalMove() === true) {
       selectedBlock.prependTo(selectedTower)
+      countMove()
     }
   }
-
-  countMove()
   isWin()
 }
-
-
 function isLegalMove() {
   let selectedID = selectedBlock.attr('id').slice(1)
   if (selectedTower.children(0).attr('id') === undefined) {
@@ -45,13 +42,10 @@ function isLegalMove() {
     return true
   }
 
-  // console.log(selectedID)
-  // console.log(towerTopID)
-  // test if selected block can move to tower
-
 }
 function countMove(){
-// add 1 to tally of moves
+  let moveCount = parseInt($('#moveCount').text())
+  $('#moveCount').text(moveCount + 1)
 }
 function isWin(){
 // test if all blocks are moved to far right tower

@@ -41,3 +41,11 @@ li {
  #b3 {
    width: 100px;
  }
+ #moveCount {
+   height: 50px;
+   width: 100px;
+   border: 1px solid black;
+   text-align: center;
+   align-self: flex-end;
+   margin: 100px;
+ }
