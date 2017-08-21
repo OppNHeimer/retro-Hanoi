@@ -28,3 +28,12 @@ li {
 .selected {
   background-color: yellow
 }
+ #small {
+   width: 80px;
+ }
+ #medium {
+   width: 90px;
+ }
+ #large {
+   width: 100px;
+ }

@@ -5,18 +5,33 @@ $('div').on('click', blockMove)
 
 function blockSelect(){
   if (selectedBlock !== undefined) {selectedBlock.removeClass('selected')}
-  selectedBlock = $(this)
-  $(this).attr('class', 'selected')
+
+  clickedBlock = $(this)
+  let clickedID = clickedBlock.attr('id')
+  let firstID = clickedBlock.parent().children().eq(0).attr('id')
+
+  if (clickedID === firstID) {
+    $(this).attr('class', 'selected')
+    selectedBlock = $(this)
+  }
+
 }
 function blockMove(){
-  selectedTower = $(this).find('ol')
-  console.log(selectedTower)
-  selectedBlock.prependTo(selectedTower)
-// move selected item to clicked tower
+  if (selectedBlock !== undefined) {
+    selectedTower = $(this).find('ol')
+    selectedBlock.prependTo(selectedTower)
+  }
   isIllegal()
   countMove()
   isWin()
 }
+
+
+
+
+
+
+
 function isIllegal(){
 // test if selected block can move to tower
 }
