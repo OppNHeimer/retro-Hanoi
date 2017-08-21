@@ -54,6 +54,7 @@ function createBlocks() {
   $("li").remove()
   numOfBlocks = $('input').val()
   blockLoop()
+  bestPossible()
   $('li').on('click', blockSelect)
 }
 function blockLoop() {
@@ -71,4 +72,10 @@ function isWin(){
   if (towerHeight2 === parseInt(numOfBlocks) || towerHeight3 === parseInt(numOfBlocks)) {
     alert("YOU WIN!")
   }
+}
+
+// calulate best possible score
+function bestPossible() {
+  best = 2 ** numOfBlocks - 1
+  $('#best').text(best)
 }

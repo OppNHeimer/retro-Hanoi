@@ -50,6 +50,14 @@ li {
    align-self: flex-end;
    margin: 100px;
  }
+ #bestPossible {
+   height: 50px;
+   width: 100px;
+   border: 1px solid black;
+   text-align: center;
+   align-self: flex-end;
+   margin: 100px;
+ }
  input {
    height: 50px;
    width: 100px;
