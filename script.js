@@ -45,8 +45,9 @@ function isLegalMove() {
 }
 // Move Count
 function countMove(){
-  let moveCount = parseInt($('#moveCount').text())
+  moveCount = parseInt($('#moveCount').text())
   $('#moveCount').text(moveCount + 1)
+  moveCount = parseInt($('#moveCount').text())
 }
 
 // Custom number of blocks
@@ -70,7 +71,11 @@ function isWin(){
   let towerHeight2 = $("#tower2").children().length - 1
   let towerHeight3 = $("#tower3").children().length - 1
   if (towerHeight2 === parseInt(numOfBlocks) || towerHeight3 === parseInt(numOfBlocks)) {
-    alert("YOU WIN!")
+    if (moveCount === best) {
+      alert("Perfect! Try a higher tower!")
+    } else {
+      alert(`Great, you finished in ${moveCount}moves. You can do better!`)
+    }
   }
 }
 
