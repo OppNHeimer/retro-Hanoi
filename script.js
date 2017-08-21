@@ -1,6 +1,6 @@
 var selectedBlock = undefined
 var selectedTower = undefined
-$('li').on('click', blockSelect)
+
 $('div').on('click', blockMove)
 $('button').on('click', createBlocks)
 // Block Selection
@@ -48,13 +48,22 @@ function countMove(){
   $('#moveCount').text(moveCount + 1)
 }
 
-// Custom block number
+// Custom number of blocks
 function createBlocks() {
+  clearBlocks()
   numOfBlocks = $('input').val()
+  blockLoop()
+  $('li').on('click', blockSelect)
+}
+function blockLoop() {
   for (let i = 0; i < numOfBlocks; i++) {
-    let block = `<li>${i+1}</li>`
-    $('#tower1').append(block)
+    let blockWidth = 100 - i*(100/numOfBlocks)
+    let block = `<li id="b${numOfBlocks - i}"style="width: ${blockWidth}%">${numOfBlocks - i}</li>`
+    $('#tower1').prepend(block)
   }
+}
+function clearBlocks() {
+  $("li").remove()
 }
 // WIN
 function isWin(){
