@@ -16,24 +16,28 @@ h1 {
 .tower {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 30%;
   border: 1px solid black;
+  text-align: center;
 }
 
 li {
   background-color: green;
   border: 1px solid black;
+  text-align: center;
+  list-style-type: none;
 }
 
 .selected {
   background-color: yellow
 }
- #small {
+ #b1 {
    width: 80px;
  }
- #medium {
+ #b2 {
    width: 90px;
  }
- #large {
+ #b3 {
    width: 100px;
  }
