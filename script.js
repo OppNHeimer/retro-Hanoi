@@ -1,3 +1,4 @@
+createBlocks()
 var selectedBlock = undefined
 var selectedTower = undefined
 
@@ -50,7 +51,7 @@ function countMove(){
 
 // Custom number of blocks
 function createBlocks() {
-  clearBlocks()
+  $("li").remove()
   numOfBlocks = $('input').val()
   blockLoop()
   $('li').on('click', blockSelect)
@@ -62,10 +63,12 @@ function blockLoop() {
     $('#tower1').prepend(block)
   }
 }
-function clearBlocks() {
-  $("li").remove()
-}
+
 // WIN
 function isWin(){
-// test if all blocks are moved to far right tower
+  let towerHeight2 = $("#tower2").children().length - 1
+  let towerHeight3 = $("#tower3").children().length - 1
+  if (towerHeight2 === parseInt(numOfBlocks) || towerHeight3 === parseInt(numOfBlocks)) {
+    alert("YOU WIN!")
+  }
 }
