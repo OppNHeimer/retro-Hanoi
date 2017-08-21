@@ -2,7 +2,7 @@ var selectedBlock = undefined
 var selectedTower = undefined
 $('li').on('click', blockSelect)
 $('div').on('click', blockMove)
-
+$('button').on('click', createBlocks)
 // Block Selection
 function blockSelect(){
   clickedBlock = $(this)
@@ -41,12 +41,22 @@ function isLegalMove() {
   if (selectedID < towerTopID) {
     return true
   }
-
 }
+// Move Count
 function countMove(){
   let moveCount = parseInt($('#moveCount').text())
   $('#moveCount').text(moveCount + 1)
 }
+
+// Custom block number
+function createBlocks() {
+  numOfBlocks = $('input').val()
+  for (let i = 0; i < numOfBlocks; i++) {
+    let block = `<li>${i+1}</li>`
+    $('#tower1').append(block)
+  }
+}
+// WIN
 function isWin(){
 // test if all blocks are moved to far right tower
 }
