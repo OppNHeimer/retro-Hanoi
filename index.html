@@ -7,24 +7,40 @@
   </head>
   <body>
     <h1>Tower of Hanoi</h1>
-      <input value="3"></input>
-      <button>go!</button>
-      <div id="moveCount">0</div>
-      <div id="bestPossible">Fewest possible moves: <span id="best"></span> moves</div>
-      <section id="game">
-        <div class="tower" id="tower1">
-          <li id="b1" style="width: 33.33%">1</li>
-          <li id="b2" style="width: 66.67%">2</li>
-          <li id="b3" style="width: 100%">3</li>
-          <span>tower 1</span>
-        </div>
-        <div class="tower" id="tower2">
-          <span>tower 2</span>
-        </div>
-        <div class="tower" id="tower3">
-          <span>tower 3</span>
-        </div>
+
+    <section id="underHead">
+
+      <section class="topLeft">
+        <div class="text">Tower Height: </div>
+        <input value="3"></input>
+        <button>go!</button>
       </section>
+
+      <section class="topRight">
+        <section class="row">
+          <div class="text">Move count:</div>
+          <div id="moveCount">0</div>
+        </section>
+        <section class="row">
+          <div class="text">Fewest possible:</div>
+          <div id="bestPossible"><span id="best"></span></div>
+        </section>
+      </section>
+
+    </section>
+
+    <section id="game">
+      <div class="tower" id="tower1">
+        <div class="base"></div>
+      </div>
+      <div class="tower" id="tower2">
+        <div class="base"></div>
+      </div>
+      <div class="tower" id="tower3">
+        <div class="base"></div>
+      </div>
+    </section>
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js"
   integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
   crossorigin="anonymous"></script>
