@@ -4,6 +4,11 @@ var selectedTower = undefined
 
 $('.tower').on('click', blockMove)
 $('button').on('click', createBlocks)
+$('input').keypress(function(e) {
+  if (e.which == 13) {
+    createBlocks()
+  }
+})
 
 // Block Selection
 function blockSelect(){
@@ -38,12 +43,23 @@ function towerClassReset() {$('.towerOption').attr('class', 'tower')}
 function highlightTowers(){
   towerClassReset()
   for (var i = 0; i < 3; i++) {
-    if ($('#game').children().eq(i).attr('id') !== clickedBlock.parent().attr('id')){
+    if ($('#game').children().eq(i).attr('id') !== selectedBlock.parent().attr('id')
+      && possibleTower(i) === true ) {
       $(`#tower${i+1}`).attr('class', 'towerOption')
     }
   }
 }
-
+function possibleTower(i) {
+  let selectedID = selectedBlock.attr('id').slice(1)
+  if ($('#game').children().eq(i).children(0).attr('id') === undefined) {
+    towerTopID = 100
+  } else {
+    towerTopID = $('#game').children().eq(i).children(0).attr('id').slice(1)
+  }
+  if (selectedID < towerTopID) {
+    return true
+  }
+}
 // Block Movement
 function blockMove(){
   if (selectedBlock !== undefined) {
@@ -78,7 +94,7 @@ function countMove(){
 
 // Resets game and creates tower of custom height
 function createBlocks() {
-  $("li").remove()
+  $('li').remove()
   selectedBlock = undefined
   towerClassReset()
   numOfBlocks = $('input').val()
@@ -92,18 +108,18 @@ function createBlocks() {
 function blockLoop() {
   for (let i = 0; i < numOfBlocks; i++) {
     let blockWidth = 100 - (i + .5)*(80/numOfBlocks)
-    let block = `<li id="b${numOfBlocks - i}"style="width: ${blockWidth}%"></li>`
+    let block = `<li id='b${numOfBlocks - i}'style='width: ${blockWidth}%'></li>`
     $('#tower1').prepend(block)
   }
 }
 
 // Tests if user won
 function isWin(){
-  let towerHeight2 = $("#tower2").children().length - 1
-  let towerHeight3 = $("#tower3").children().length - 1
+  let towerHeight2 = $('#tower2').children().length - 1
+  let towerHeight3 = $('#tower3').children().length - 1
   if (towerHeight2 === parseInt(numOfBlocks) || towerHeight3 === parseInt(numOfBlocks)) {
     if (moveCount === best) {
-      alert("Perfect! Try a higher tower!")
+      alert('Perfect! Try a higher tower!')
     } else {
       alert(`Great, you finished in ${moveCount}moves. You can do better!`)
     }
