@@ -1,5 +1,5 @@
-// test new branch
-select = 0
+
+toggle = 0
 createBlocks()
 
 var selectedBlock = undefined
@@ -44,7 +44,7 @@ function blockSelect(){
 function blockClassSelected() {selectedBlock.attr('class', 'selected')}
 
 // Resets block class to default
-function blockClassReset() {selectedBlock.removeClass('selected')}
+function blockClassReset() {selectedBlock.attr('class', 'unselected')}
 
 // Checks if clicked block is on top of tower
 function isLegalSelection(){
@@ -113,7 +113,7 @@ function countMove(){
 
 // Resets game and creates tower of custom height
 function createBlocks() {
-  if (select !== 0) {stopHint()}
+  if (toggle !== 0) {stopHint()}
   $('li').remove()
   resetCount()
   selectedBlock = undefined
@@ -129,7 +129,7 @@ function createBlocks() {
 function blockLoop() {
   for (let i = 0; i < numOfBlocks; i++) {
     let blockWidth = 100 - (i + .5)*(80/numOfBlocks)
-    let block = `<li id='b${numOfBlocks - i}'style='width: ${blockWidth}%'></li>`
+    let block = `<li class='unselected' id='b${numOfBlocks - i}'style='width: ${blockWidth}%'></li>`
     $('#tower1').prepend(block)
   }
 }
@@ -166,16 +166,13 @@ function bestPossible() {
 // Gives user blinking hint
 function clickHint() {
     hintBlock = $('#b1')
-    select = setInterval(hintClassSelected, 500)
-    reset = setInterval(hintClassReset, 1000)
+    toggle = setInterval(toggleBlock, 500)
 }
-function hintClassSelected() {hintBlock.attr('class', 'selected')}
-function hintClassReset() {hintBlock.removeClass('selected')}
+function toggleBlock() {hintBlock.toggleClass('unselected selected')}
 
 // Stops block from blinking
 function stopHint() {
-  clearInterval(select)
-  clearInterval(reset)
+  clearInterval(toggle)
 }
 
 function makeInvisible() {

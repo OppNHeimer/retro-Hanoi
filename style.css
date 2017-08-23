@@ -122,13 +122,14 @@ button {
   box-shadow: -3px 0 rgb(90, 90, 0), 0 3px rgb(90, 90, 0), 0 -3px rgb(90, 90, 0), 3px 0 rgb(90, 90, 0), 6px 3px 0 -1px rgb(90, 90, 0), 8px 7px 0 -1px rgb(90, 90, 0), 10px 11px 0 -1px rgb(90, 90, 0);
 }
 
-
+.unselected {
+  background-color: cyan;
+  box-shadow: -3px 0 darkblue, 0 3px darkblue, 0 -3px darkblue, 3px 0 darkblue, 6px 3px 0 -1px darkblue, 8px 7px 0 -1px darkblue, 10px 11px 0 -1px darkblue;
+}
  li {
- background-color: cyan;
  height: 70px;
  text-align: center;
  list-style-type: none;
- box-shadow: -3px 0 darkblue, 0 3px darkblue, 0 -3px darkblue, 3px 0 darkblue, 6px 3px 0 -1px darkblue, 8px 7px 0 -1px darkblue, 10px 11px 0 -1px darkblue;
 }
 
 #win {
