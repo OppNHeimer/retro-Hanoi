@@ -41,6 +41,22 @@
       </div>
     </section>
 
+    <section id='win' class='invisible'>
+      <h1>WIN!</h1>
+      <h3>Great, you finished in ${moveCount}moves. You can do better!</h3>
+      <button id='reset'></button>
+    </section>
+    <div id=instructions>
+      <p>Goal: <br>&emsp;Restack the tower on a different platform.
+      <br><br>How to: <br>&emsp;Click to select a tower piece. <br>&emsp;Click above a different platform to move the piece.
+      <br><br>Rules:
+        <br> &emsp; Only the top piece of a tower may be selected.
+        <br> &emsp; A piece cannot be moved atop a smaller piece.
+      </p>
+    </div>
+    <div class='instructionButton' id='inst' >instructions</div>
+    <div class='instructionButton' id='hide' style='display: none;' >hide</div>
+
     <script src='https://code.jquery.com/jquery-3.2.1.min.js'
   integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
   crossorigin='anonymous'></script>

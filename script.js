@@ -1,22 +1,40 @@
+select = 0
 createBlocks()
+
 var selectedBlock = undefined
 var selectedTower = undefined
 
 $('.tower').on('click', blockMove)
 $('button').on('click', createBlocks)
+$('#reset').on('click', makeInvisible)
+$('#inst').on('click', showInstructions)
+$('#hide').on('click', hideInstructions)
 $('input').keypress(function(e) {
   if (e.which == 13) {
     createBlocks()
   }
 })
 
+//Show instructions
+function showInstructions() {
+  $('#instructions').slideDown()
+  $('#inst').attr('style', 'display: none')
+  $('#hide').attr('style', 'display: block')
+}
+//Hide instructions
+function hideInstructions() {
+  $('#instructions').slideUp()
+  $('#hide').attr('style', 'display: none')
+  $('#inst').attr('style', 'display: block')
+
+}
 // Block Selection
 function blockSelect(){
   clickedBlock = $(this)
   if (isLegalSelection() === true) {
+    stopHint()
     if (selectedBlock !== undefined) {blockClassReset()}
     selectedBlock = $(this)
-    stopHint()
     blockClassSelected()
     highlightTowers()
   }
@@ -94,14 +112,16 @@ function countMove(){
 
 // Resets game and creates tower of custom height
 function createBlocks() {
+  if (select !== 0) {stopHint()}
   $('li').remove()
+  resetCount()
   selectedBlock = undefined
   towerClassReset()
   numOfBlocks = $('input').val()
   blockLoop()
-  clickHint()
   bestPossible()
   $('li').on('click', blockSelect)
+  clickHint()
 }
 
 // Creates blocks
@@ -113,15 +133,25 @@ function blockLoop() {
   }
 }
 
+//Resets move count
+function resetCount() {
+  $('#moveCount').text(0)
+}
+
 // Tests if user won
 function isWin(){
   let towerHeight2 = $('#tower2').children().length - 1
   let towerHeight3 = $('#tower3').children().length - 1
   if (towerHeight2 === parseInt(numOfBlocks) || towerHeight3 === parseInt(numOfBlocks)) {
+    $('#win').removeClass('invisible')
     if (moveCount === best) {
-      alert('Perfect! Try a higher tower!')
+      $('#win').find('h3').text('Perfect! Try a higher tower!')
+      currentValue = $('input').attr('value')
+      $('input').attr('value', `${parseInt(currentValue) + 1}`)
+      $('#reset').text('go!')
     } else {
-      alert(`Great, you finished in ${moveCount}moves. You can do better!`)
+      $('#win').find('h3').text(`Great! You finished in ${moveCount} moves. You can do better!`)
+      $('#reset').text('reset')
     }
   }
 }
@@ -145,4 +175,8 @@ function hintClassReset() {hintBlock.removeClass('selected')}
 function stopHint() {
   clearInterval(select)
   clearInterval(reset)
+}
+
+function makeInvisible() {
+  $('#win').attr('class', 'invisible')
 }

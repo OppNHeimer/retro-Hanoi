@@ -4,6 +4,7 @@ body {
   font-family: PressStart;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   background-color: lemonchiffon;
   height: 100vh;
   width: auto;
@@ -122,11 +123,74 @@ button {
 }
 
 
-li {
+ li {
  background-color: cyan;
  height: 70px;
- /*flex-shrink: 1;*/
  text-align: center;
  list-style-type: none;
  box-shadow: -3px 0 darkblue, 0 3px darkblue, 0 -3px darkblue, 3px 0 darkblue, 6px 3px 0 -1px darkblue, 8px 7px 0 -1px darkblue, 10px 11px 0 -1px darkblue;
+}
+
+#win {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: fixed;
+  align-self: center;
+  z-index: 1;
+  height: 50vh;
+  width: 50vw;
+  background-color: white;
+  box-shadow:
+  -11px 0 0 -5px white,
+  0 11px  0 -5px white,
+  0 -11px 0 -5px white,
+  11px 0 0 -5px white,
+  -6px 0 magenta,
+  0 6px magenta,
+  0 -6px magenta,
+  6px 0 magenta,
+  -17px 0 0 -5px yellow,
+  0 17px  0 -5px yellow,
+  0 -17px 0 -5px yellow,
+  17px 0 0 -5px yellow,
+  -27px 0 0 -10px magenta,
+  0 27px 0 -10px magenta,
+  0 -27px 0 -10px magenta,
+  27px 0 0 -10px magenta;
+}
+.invisible {
+  position: fixed;
+  visibility: hidden;
+  z-index: -1;
+}
+#win h1 {
+  font-size: 80px;
+}
+h3 {
+  color: darkblue;
+  text-shadow: 2px 2px cyan;
+  text-align: center;
+}
+#instructions {
+  position: fixed;
+  z-index: 0;
+  background-color: white;
+  border: 1px solid black;
+  top: -1px;
+  left: 10px;
+  padding: 20px 20px 10px 20px;
+  line-height: 26px;
+  display: none;
+  box-shadow: -2px 0 black, 0 2px black, 0 -2px black, 2px 0 black, 5px 5px black
+}
+.instructionButton {
+  position: fixed;
+  z-index: 1;
+  padding: 2px;
+  background-color: magenta;
+  border: 1px solid black;
+  top: 0;
+  left: 20px;
+  box-shadow: -2px 0 black, 0 2px black, 0 -2px black, 2px 0 black, 3px 3px black;
 }
