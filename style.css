@@ -31,6 +31,7 @@ h1 {
 
 .topLeft {
   display: flex;
+  z-index: 1;
   flex-direction: row;
   align-items: flex-end;
   min-height: 40px;
@@ -67,6 +68,7 @@ button {
 
 .topRight {
   display: flex;
+  z-index: 1;
   background-color: white;
   flex-direction: column;
   height: 50px;
@@ -195,4 +197,57 @@ h3 {
   top: 0;
   left: 20px;
   box-shadow: -2px 0 black, 0 2px black, 0 -2px black, 2px 0 black, 3px 3px black;
+}
+#ground {
+  position: fixed;
+  z-index: -1;
+  bottom: -70px;
+  align-self: center;
+  width: 300vw;
+  height: 25vh;
+  background: radial-gradient(rgba(255, 255, 0, .7), rgba(255, 255, 0, .7), goldenrod, goldenrod);
+  /*background: radial-gradient(yellow, darkmagenta);*/
+  border-radius: 50%;
+}
+#sun {
+  position: fixed;
+  left: 50%;
+  top: 25%;
+  background-image: url('img/sun.png');
+  background-size: contain;
+  height: 30vh;
+  width: 30vh;
+  z-index: 0;
+}
+#ray1 {
+  position: fixed;
+  left: 33%;
+  top: 47%;
+  background-image: url('img/leftRay.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 28vh;
+  width: 28vh;
+}
+#ray2 {
+  position: fixed;
+  left: 55%;
+  top: 58%;
+  background-image: url('img/centerRay.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 16vh;
+  width: 16vh;}
+#ray3 {
+    position: fixed;
+    left: 67%;
+    top: 50%;
+    background-image: url('img/rightRay.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 20vh;
+    width: 20vh;
+}
+#invisible {
+  opacity: 0;
 }

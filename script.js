@@ -18,7 +18,7 @@ $('input').keypress(function(e) {
     createBlocks()
   }
 })
-
+// Block Selection
 function blockSelect(){
   event.stopPropagation()
   clickedBlock = $(this)
@@ -52,6 +52,7 @@ function blockMove(){
     }
     isWin()
   }
+// Checks if clicked block is on top of tower
 function isLegalSelection(){
   clickedID = clickedBlock.attr('id')
   let firstID = clickedBlock.parent().children().eq(0).attr('id')
@@ -61,6 +62,7 @@ function isLegalSelection(){
     legalSelection = false
   }
 }
+// Checks if move is legal
 function isLegalMove() {
   selectedID = parseInt(selectedBlock.attr('id').slice(1))
     if (selectedTower.children().eq(0).attr('id') === undefined) {
@@ -87,16 +89,19 @@ function hideInstructions() {
   $('#inst').attr('style', 'display: block')
 
 }
-// Block Selection
+
 // Change block to selected class
 function blockClassSelected() {selectedBlock.attr('class', 'selected')}
 
 // Resets block class to default
 function blockClassReset() {selectedBlock.attr('class', 'unselected')}
 
-// Checks if clicked block is on top of tower
+
 // Resets tower class to default
-function towerClassReset() {$('.towerOption').attr('class', 'tower')}
+function towerClassReset() {
+  $('.towerOption').attr('class', 'tower')
+  $('#rays').children().attr('id', 'invisible')
+}
 // highlights towers to move block to
 function highlightTowers(){
   towerClassReset()
@@ -104,6 +109,7 @@ function highlightTowers(){
     if ($('#game').children().eq(i).attr('id') !== selectedBlock.parent().attr('id')
       && possibleTower(i) === true ) {
       $(`#tower${i+1}`).attr('class', 'towerOption')
+      $(`.ray${i+1}`).attr('id', `ray${i+1}`)
     }
   }
 }
@@ -118,19 +124,12 @@ function possibleTower(i) {
     return true
   }
 }
-// Block Movement **bug** isLegalSelection returns false when diff block is clicked
-
-
-//block moves if legalmove = true and legal selection = undefined
-
-// Checks if move is legal
 // Move Count
 function countMove(){
   moveCount = parseInt($('#moveCount').text())
   $('#moveCount').text(moveCount + 1)
   moveCount = parseInt($('#moveCount').text())
 }
-
 // Resets game and creates tower of custom height
 function createBlocks() {
   if (toggle !== 0) {stopHint()}
@@ -144,7 +143,6 @@ function createBlocks() {
   $('li').on('click', blockSelect)
   clickHint()
 }
-
 // Creates blocks
 function blockLoop() {
   for (let i = 0; i < numOfBlocks; i++) {
@@ -153,12 +151,10 @@ function blockLoop() {
     $('#tower1').prepend(block)
   }
 }
-
 //Resets move count
 function resetCount() {
   $('#moveCount').text(0)
 }
-
 // Tests if user won
 function isWin(){
   let towerHeight2 = $('#tower2').children().length - 1
@@ -176,25 +172,23 @@ function isWin(){
     }
   }
 }
-
 // Calulate the best possible score
 function bestPossible() {
   best = 2 ** numOfBlocks - 1
   $('#best').text(best)
 }
-
 // Gives user blinking hint
 function clickHint() {
     hintBlock = $('#b1')
     toggle = setInterval(toggleBlock, 300)
 }
+//blinks hint block at game start
 function toggleBlock() {hintBlock.toggleClass('unselected selected')}
-
 // Stops block from blinking
 function stopHint() {
   clearInterval(toggle)
 }
-
+// makes win page vanish on game reset
 function makeInvisible() {
   $('#win').attr('class', 'invisible')
 }
