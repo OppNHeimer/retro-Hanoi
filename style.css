@@ -218,11 +218,11 @@ h3 {
   background-size: contain;
   height: 30vh;
   width: 30vh;
-  z-index: -2;
+  z-index: -3;
 }
 #ray1 {
   position: fixed;
-  z-index: -1;
+  z-index: -3;
   left: 33%;
   top: 47%;
   background-image: url('img/leftRay.png');
@@ -233,7 +233,7 @@ h3 {
 }
 #ray2 {
   position: fixed;
-  z-index: -1;
+  z-index: -3;
   left: 55%;
   top: 58%;
   background-image: url('img/centerRay.png');
@@ -243,7 +243,7 @@ h3 {
   width: 16vh;}
 #ray3 {
     position: fixed;
-    z-index: -1;
+    z-index: -3;
     left: 67%;
     top: 50%;
     background-image: url('img/rightRay.png');

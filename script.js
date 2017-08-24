@@ -12,11 +12,10 @@ $('button').on('click', createBlocks)
 $('#reset').on('click', makeInvisible)
 $('#inst').on('click', showInstructions)
 $('#hide').on('click', hideInstructions)
-scrollCloud1()
 scrollCloud2()
-// setTimeout(scrollCloud2, 10000)
+setTimeout(scrollCloud1, 10000)
 setInterval(scrollCloud1, 25000)
-setInterval(scrollCloud2, 30000)
+setInterval(scrollCloud2, 35000)
 $('input').keypress(function(e) {
   if (e.which == 13) {
     createBlocks()
@@ -199,7 +198,7 @@ function makeInvisible() {
 }
 function scrollCloud1() {
   for (let i = 100, offset = 0; i > -50, offset < 200; i -= 1, offset += 1) {
-    setTimeout(scroll, 90 * offset)
+    setTimeout(scroll, 80 * offset)
     function scroll() {
       $('.cloud1').attr('style', `left: ${i}%`)
     }
@@ -207,7 +206,7 @@ function scrollCloud1() {
 }
 function scrollCloud2() {
   for (let i = 100, offset = 0; i > -50, offset < 200; i -= 1, offset += 1) {
-    setTimeout(scroll, 150 * offset)
+    setTimeout(scroll, 120 * offset)
     function scroll() {
       $('.cloud2').attr('style', `left: ${i}%`)
     }
