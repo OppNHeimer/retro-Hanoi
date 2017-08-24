@@ -197,7 +197,7 @@ function makeInvisible() {
   $('#win').attr('class', 'invisible')
 }
 function scrollCloud1() {
-  for (let i = 100, offset = 0; i > -50, offset < 200; i -= 1, offset += 1) {
+  for (let i = 100, offset = 0; i > -50, offset < 150; i -= 1, offset += 1) {
     setTimeout(scroll, 80 * offset)
     function scroll() {
       $('.cloud1').attr('style', `left: ${i}%`)
