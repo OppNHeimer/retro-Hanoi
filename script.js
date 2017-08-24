@@ -1,6 +1,5 @@
 
 toggle = 0
-// legalMove = undefined
 legalSelection = undefined
 
 createBlocks()
@@ -13,6 +12,8 @@ $('button').on('click', createBlocks)
 $('#reset').on('click', makeInvisible)
 $('#inst').on('click', showInstructions)
 $('#hide').on('click', hideInstructions)
+scrollCloud1()
+setInterval(scrollCloud1, 25000)
 $('input').keypress(function(e) {
   if (e.which == 13) {
     createBlocks()
@@ -32,7 +33,7 @@ function blockSelect(){
     clickedBlock = undefined
   }
   else {
-    clickedBlock.effect('shake')
+    clickedBlock.effect('shake', {times: 2, distance: 5}, 200)
     legalSelection = undefined
     clickedBlock = undefined
   }
@@ -48,7 +49,7 @@ function blockMove(){
       highlightTowers()
     }
     else if (selectedBlock.parent().attr('id') !== selectedTower.attr('id')) {
-      selectedTower.effect('shake')}
+      selectedTower.effect('shake', {times: 2, distance: 5}, 200)}
     }
     isWin()
   }
@@ -108,7 +109,7 @@ function highlightTowers(){
   for (var i = 0; i < 3; i++) {
     if ($('#game').children().eq(i).attr('id') !== selectedBlock.parent().attr('id')
       && possibleTower(i) === true ) {
-      $(`#tower${i+1}`).attr('class', 'towerOption')
+      // $(`#tower${i+1}`).attr('class', 'towerOption')
       $(`.ray${i+1}`).attr('id', `ray${i+1}`)
     }
   }
@@ -191,4 +192,12 @@ function stopHint() {
 // makes win page vanish on game reset
 function makeInvisible() {
   $('#win').attr('class', 'invisible')
+}
+function scrollCloud1() {
+  for (let i = 100, offset = 0; i > -50, offset < 200; i -= 1, offset += 1) {
+    setTimeout(scroll, 90 * offset)
+    function scroll() {
+      $('.cloud1').attr('style', `left: ${i}%`)
+    }
+  }
 }
