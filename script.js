@@ -1,5 +1,8 @@
 
 toggle = 0
+// legalMove = undefined
+legalSelection = undefined
+
 createBlocks()
 
 var selectedBlock = undefined
@@ -16,6 +19,61 @@ $('input').keypress(function(e) {
   }
 })
 
+function blockSelect(){
+  event.stopPropagation()
+  clickedBlock = $(this)
+  isLegalSelection()
+  if (legalSelection === true) {
+    stopHint()
+    if (selectedBlock !== undefined) {blockClassReset()}
+    selectedBlock = $(this)
+    blockClassSelected()
+    highlightTowers()
+    clickedBlock = undefined
+  }
+  else {
+    clickedBlock.effect('shake')
+    legalSelection = undefined
+    clickedBlock = undefined
+  }
+}
+
+function blockMove(){
+  if (selectedBlock !== undefined) {
+    selectedTower = $(this)
+    isLegalMove()
+    if (legalMove === true ) {
+      selectedBlock.prependTo(selectedTower)
+      countMove()
+      highlightTowers()
+    }
+    else if (selectedBlock.parent().attr('id') !== selectedTower.attr('id')) {
+      selectedTower.effect('shake')}
+    }
+    isWin()
+  }
+function isLegalSelection(){
+  clickedID = clickedBlock.attr('id')
+  let firstID = clickedBlock.parent().children().eq(0).attr('id')
+  if (clickedID === firstID) {
+    legalSelection = true
+  } else if (clickedID !== firstID) {
+    legalSelection = false
+  }
+}
+function isLegalMove() {
+  selectedID = parseInt(selectedBlock.attr('id').slice(1))
+    if (selectedTower.children().eq(0).attr('id') === undefined) {
+      towerTopID = 1000
+    } else {
+      towerTopID = parseInt(selectedTower.children().eq(0).attr('id').slice(1))
+    }
+  if (selectedID < towerTopID) {
+    legalMove = true
+  } else {
+    legalMove = false
+  }
+}
 //Show instructions
 function showInstructions() {
   $('#instructions').slideDown()
@@ -30,16 +88,6 @@ function hideInstructions() {
 
 }
 // Block Selection
-function blockSelect(){
-  clickedBlock = $(this)
-  if (isLegalSelection() === true) {
-    stopHint()
-    if (selectedBlock !== undefined) {blockClassReset()}
-    selectedBlock = $(this)
-    blockClassSelected()
-    highlightTowers()
-  }
-}
 // Change block to selected class
 function blockClassSelected() {selectedBlock.attr('class', 'selected')}
 
@@ -47,17 +95,8 @@ function blockClassSelected() {selectedBlock.attr('class', 'selected')}
 function blockClassReset() {selectedBlock.attr('class', 'unselected')}
 
 // Checks if clicked block is on top of tower
-function isLegalSelection(){
-  let clickedID = clickedBlock.attr('id')
-  let firstID = clickedBlock.parent().children().eq(0).attr('id')
-  if (clickedID === firstID) {
-    return true
-  }
-}
-
 // Resets tower class to default
 function towerClassReset() {$('.towerOption').attr('class', 'tower')}
-
 // highlights towers to move block to
 function highlightTowers(){
   towerClassReset()
@@ -69,41 +108,22 @@ function highlightTowers(){
   }
 }
 function possibleTower(i) {
-  let selectedID = selectedBlock.attr('id').slice(1)
+  let selectedID = parseInt(selectedBlock.attr('id').slice(1))
   if ($('#game').children().eq(i).children(0).attr('id') === undefined) {
     towerTopID = 100
   } else {
-    towerTopID = $('#game').children().eq(i).children(0).attr('id').slice(1)
+    towerTopID = parseInt($('#game').children().eq(i).children(0).attr('id').slice(1))
   }
   if (selectedID < towerTopID) {
     return true
   }
 }
-// Block Movement
-function blockMove(){
-  if (selectedBlock !== undefined) {
-    selectedTower = $(this)
-    if (isLegalMove() === true) {
-      selectedBlock.prependTo(selectedTower)
-      countMove()
-      highlightTowers()
-    }
-  }
-  isWin()
-}
+// Block Movement **bug** isLegalSelection returns false when diff block is clicked
+
+
+//block moves if legalmove = true and legal selection = undefined
 
 // Checks if move is legal
-function isLegalMove() {
-  let selectedID = selectedBlock.attr('id').slice(1)
-  if (selectedTower.children(0).attr('id') === undefined) {
-    towerTopID = 100
-  } else {
-    towerTopID = selectedTower.children(0).attr('id').slice(1)
-  }
-  if (selectedID < towerTopID) {
-    return true
-  }
-}
 // Move Count
 function countMove(){
   moveCount = parseInt($('#moveCount').text())
@@ -166,7 +186,7 @@ function bestPossible() {
 // Gives user blinking hint
 function clickHint() {
     hintBlock = $('#b1')
-    toggle = setInterval(toggleBlock, 500)
+    toggle = setInterval(toggleBlock, 300)
 }
 function toggleBlock() {hintBlock.toggleClass('unselected selected')}
 
