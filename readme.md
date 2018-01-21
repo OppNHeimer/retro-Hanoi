@@ -1,6 +1,6 @@
 # Retro Hanoi
 
-Retro Hanoi is an adaptation of an age-old puzzle, 'Tower of Hanoi'. Styled to feel like an 80's arcade game, Retro Hanoi is easy to play but quickly scales to an impossible challenge.
+Retro Hanoi is an adaptation of an age-old puzzle, 'Tower of Hanoi'. Styled to feel like an 80's arcade game, Retro Hanoi is easy to play but quickly scales to an impossible challenge. The game includes small animations that provide hints and visual effect.
 
 ## Getting Started
 
@@ -25,17 +25,17 @@ Make the game more challenging by starting with a taller tower. Try to solve the
 
 ### How to
 
-Click to select a tower piece.
-Click above a different platform to move the piece.
+Click to select a tower block.
+Click above a different platform to move the block.
 
 ### Rules
 
- Only the top piece of a tower may be selected.
- A piece cannot be moved atop a smaller piece.
+Only the top block of a tower may be selected.
+A block cannot be moved atop a smaller block.
 
 ## A little more about Retro Hanoi
 
-Retro Hanoi was created as an exercise to practice basic DOM manipulation using JavaScript and jQuery. The game was built in only a few days after only a few weeks of experience writing code.
+Retro Hanoi was created as an exercise to practice basic DOM manipulation using JavaScript and jQuery. The game was built in only a few days after only a few weeks of experience writing code. 
 
 ## Technologies Used
 
