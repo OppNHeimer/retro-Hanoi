@@ -15,6 +15,24 @@ $ git clone git@github.com:OppNHeimer/retro-Hanoi.git
 $ open index.html
 ```
 
+## Game Play
+
+### Goal
+
+Restack the tower on a different platform.
+
+Make the game more challenging by starting with a taller tower. Try to solve the puzzle in the fewest possible moves.
+
+### How to
+
+Click to select a tower piece.
+Click above a different platform to move the piece.
+
+### Rules
+
+ Only the top piece of a tower may be selected.
+ A piece cannot be moved atop a smaller piece.
+
 ## A little more about Retro Hanoi
 
 Retro Hanoi was created as an exercise to practice basic DOM manipulation using JavaScript and jQuery. The game was built in only a few days after only a few weeks of experience writing code.
