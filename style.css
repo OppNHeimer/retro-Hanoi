@@ -1,4 +1,16 @@
-@font-face { font-family: PressStart; src: url('fonts/press-start/PressStart2P.ttf'); }
+/* Really great job here with the styling. I would make sure you have consistent spacing throughout
+Also, if you moved to using SASS instead of CSS in the future you could use
+its functionality to reduce this code http: //sass-lang.com/guide. As it is
+I would probably add classes in addition to IDs on some of your elements
+so that duplication is reduced. I have examples further down. */
+/* Another potential future improvement would be to make the website
+responsive so users can view the game on their phone in an optimized manner */
+
+@font-face { 
+  /* Good job including your own font */
+  font-family: PressStart; 
+  src: url('fonts/press-start/PressStart2P.ttf');
+}
 
 body {
   font-family: PressStart;
@@ -54,6 +66,7 @@ input {
   margin-right: 5px;
 
 }
+
 button {
   height: 24px;
   width: 100px;
@@ -64,7 +77,6 @@ button {
   font-size: 18px;
   box-shadow: -2px 0 black, 0 2px black, 0 -2px black, 2px 0 black, 3px 3px black;
 }
-
 
 .topRight {
   display: flex;
@@ -111,6 +123,7 @@ button {
     margin: 0 5px 20px 5px;
     background: linear-gradient(lemonchiffon, lemonchiffon, rgba(250, 0, 250, .2))
 }
+
 .base {
   width: 100%;
   height: 15px;
@@ -129,6 +142,7 @@ button {
   background-color: cyan;
   box-shadow: -3px 0 darkblue, 0 3px darkblue, 0 -3px darkblue, 3px 0 darkblue, 6px 3px 0 -1px darkblue, 8px 7px 0 -1px darkblue, 10px 11px 0 -1px darkblue;
 }
+
  li {
  height: 70px;
  text-align: center;
@@ -176,6 +190,7 @@ h3 {
   text-shadow: 2px 2px cyan;
   text-align: center;
 }
+
 #instructions {
   position: fixed;
   z-index: 1;
@@ -189,6 +204,7 @@ h3 {
   display: none;
   box-shadow: -2px 0 black, 0 2px black, 0 -2px black, 2px 0 black, 5px 5px black
 }
+
 .instructionButton {
   position: fixed;
   z-index: 1;
@@ -199,6 +215,7 @@ h3 {
   left: 20px;
   box-shadow: -2px 0 black, 0 2px black, 0 -2px black, 2px 0 black, 3px 3px black;
 }
+
 #ground {
   position: fixed;
   z-index: -2;
@@ -210,6 +227,7 @@ h3 {
   /*background: radial-gradient(yellow, darkmagenta);*/
   border-radius: 50%;
 }
+
 #sun {
   position: fixed;
   left: 50%;
@@ -220,6 +238,7 @@ h3 {
   width: 30vh;
   z-index: -3;
 }
+
 #ray1 {
   position: fixed;
   z-index: -3;
@@ -231,6 +250,7 @@ h3 {
   height: 28vh;
   width: 28vh;
 }
+
 #ray2 {
   position: fixed;
   z-index: -3;
@@ -240,21 +260,43 @@ h3 {
   background-size: contain;
   background-repeat: no-repeat;
   height: 16vh;
-  width: 16vh;}
-#ray3 {
-    position: fixed;
-    z-index: -3;
-    left: 67%;
-    top: 50%;
-    background-image: url('img/rightRay.png');
-    background-size: contain;
-    background-repeat: no-repeat;
-    height: 20vh;
-    width: 20vh;
+  width: 16vh;
 }
+
+/* AS: Fix indentation here */
+#ray3 {
+  position: fixed;
+  z-index: -3;
+  left: 67%;
+  top: 50%;
+  background-image: url('img/rightRay.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 20vh;
+  width: 20vh;
+}
+
 #invisible {
   opacity: 0;
 }
+
+/* AS:
+.cloud {
+  position: fixed;
+  left: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+#cloud1 {
+  z-index: -1;
+  top: 25%;
+  background-image: url('img/cloud1.png');
+  height: 70vh;
+  width: 70vh; 
+}
+
+*/
 .cloud1 {
   position: fixed;
   z-index: -1;

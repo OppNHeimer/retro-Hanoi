@@ -1,13 +1,18 @@
+<!-- AS - What is the jquery.path.js file in this directory? Doesn't seem
+to be included -->
 <!DOCTYPE html>
 <html>
   <head>
     <meta charset='utf-8'>
     <link rel='stylesheet' type='text/css' href='style.css'/>
+    <!-- AS - Add a title! -->
     <title></title>
   </head>
   <body>
     <h1>Tower of Hanoi</h1>
 
+    <!-- AS - I would use kebab case for css classes i.e. top-left instead of 
+    topLeft -->
     <section id='underHead'>
 
       <section class='topLeft'>
@@ -26,7 +31,6 @@
           <div id='bestPossible'><span id='best'></span></div>
         </section>
       </section>
-
     </section>
 
     <section id='game'>
@@ -47,6 +51,8 @@
       <button id='reset'></button>
     </section>
     <div id=instructions>
+      <!-- AS: I would put these each in their own P tags rather than using
+      br tags -->
       <p>Goal: <br>&emsp;Restack the tower on a different platform.
       <br><br>How to: <br>&emsp;Click to select a tower piece. <br>&emsp;Click above a different platform to move the piece.
       <br><br>Rules:
@@ -55,6 +61,7 @@
       </p>
     </div>
     <div class='instructionButton' id='inst' >instructions</div>
+    <!-- AS: I would avoid using inline styles -->
     <div class='instructionButton' id='hide' style='display: none;'>hide</div>
     <div id='ground'></div>
     <div id='sun'></div>
@@ -68,13 +75,16 @@
       <div class='cloud2'></div>
     </section>
 
-    <script src='https://code.jquery.com/jquery-3.2.1.min.js'
-  integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
-  crossorigin='anonymous'></script>
+    <script 
+      src='https://code.jquery.com/jquery-3.2.1.min.js'
+      integrity='sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4='
+      crossorigin='anonymous'>
+    </script>
     <script
-    src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-    integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
-    crossorigin="anonymous"></script>
+      src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+      integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+      crossorigin="anonymous">
+    </script>
     <script type='text/javascript' src='script.js'></script>
   </body>
 </html>
